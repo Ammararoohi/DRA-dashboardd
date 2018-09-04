@@ -1,0 +1,330 @@
+
+<!DOCTYPE html>
+<head>
+<title>DRA</title>
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link rel="stylesheet" href="css/bootstrap.css">
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="css/font.css" type="text/css"/>
+<link href="css/font-awesome.css" rel="stylesheet"> 
+<script src="js/jquery2.0.3.min.js"></script>
+<script src="js/modernizr.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/screenfull.js"></script>
+		<script>
+		$(function () {
+			$('#supported').text('Supported/allowed: ' + !!screenfull.enabled);
+
+			if (!screenfull.enabled) {
+				return false;
+			}
+
+			
+
+			$('#toggle').click(function () {
+				screenfull.toggle($('#container')[0]);
+			});	
+		});
+		</script>
+<script src="js/raphael-min.js"></script>
+<script src="js/morris.js"></script>
+<link rel="stylesheet" href="css/morris.css">
+
+<script src="js/skycons.js"></script>
+</head>
+<body class="dashboard-page">
+	<script>
+	        var theme = $.cookie('protonTheme') || 'default';
+	        $('body').removeClass (function (index, css) {
+	            return (css.match (/\btheme-\S+/g) || []).join(' ');
+	        });
+	        if (theme !== 'default') $('body').addClass(theme);
+        </script>
+	<nav class="main-menu">
+		<ul>
+			<li>
+				<a href="index.html">
+					<i class="fa fa-home nav_icon"></i>
+					<span class="nav-text">
+					Dashboard
+					</span>
+				</a>
+			</li>
+			
+			<li class="has-subnav">
+				<a href="javascript:;">
+					<i class="fa fa-file-text-o nav_icon"></i>
+						<span class="nav-text">TOPOLOGY</span>
+					<i class="icon-angle-right"></i><i class="icon-angle-down"></i>
+				</a>
+				<ul>
+					<li>
+						<a class="subnav-text" href="gallery.html">
+							DRA Diagrams
+						</a>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<a href="charts.html">
+					<i class="fa fa-bar-chart nav_icon"></i>
+					<span class="nav-text">
+						CHARTS
+					</span>
+				</a>
+			</li>
+			<li>
+				<a href="error.html">
+					<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+					<span class="nav-text">
+					CONFIGURATIONS
+					</span>
+				</a>
+			</li>
+		</ul>
+		<ul class="logout">
+			<li>
+			<a href="login.html">
+			<i class="icon-off nav-icon"></i>
+			<span class="nav-text">
+			Logout
+			</span>
+			</a>
+			</li>
+		</ul>
+	</nav>
+	<section class="wrapper scrollable">
+		<nav class="user-menu">
+			<a href="javascript:;" class="main-menu-access">
+			<i class="icon-proton-logo"></i>
+			<i class="icon-reorder"></i>
+			</a>
+		</nav>
+		<section class="title-bar">
+			<div class="logo">
+				<h1><a href="index.html"><img src="images/telelogo.png" alt="Image" height="100" width="120" />DRA</a></h1>
+			</div>
+					<div class="profile_details">		
+						<ul>
+							<li class="dropdown profile_details_drop">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+									<div class="profile_img">	
+										<span class="prfil-img"><i class="fa fa-user" aria-hidden="true"></i></span> 
+										<div class="clearfix"></div>	
+									</div>	
+								</a>
+								<ul class="dropdown-menu drp-mnu"/>
+									<li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li> 
+									<li> <a href="#"><i class="fa fa-user"></i> Profile</a> </li> 
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+		<div class="main-grid">
+			<div class="agile-grids">	
+				
+				<div class="chart-heading">
+					<h2>Charts</h2>
+				</div>
+				<div class="col-md-6 agile-grid-left">
+					<div class="w3l-chart">
+						<h3>Multiple Data Sets</h3>
+						<div id="graph"></div>
+					</div>
+					<div class="w3l-chart events-chart">
+						<h3>Time Events</h3>
+						<div class="events-chart-info">
+							<div id="graph10"></div>
+							<script>
+							var week_data = [
+							  {"period": "2011 W27", "licensed": 3407, "sorned": 660},
+							  {"period": "2011 W26", "licensed": 3351, "sorned": 629},
+							  {"period": "2011 W25", "licensed": 3269, "sorned": 618},
+							  {"period": "2011 W24", "licensed": 3246, "sorned": 661},
+							  {"period": "2011 W23", "licensed": 3257, "sorned": 667},
+							  {"period": "2011 W22", "licensed": 3248, "sorned": 627},
+							  {"period": "2011 W21", "licensed": 3171, "sorned": 660},
+							  {"period": "2011 W20", "licensed": 3171, "sorned": 676},
+							  {"period": "2011 W19", "licensed": 3201, "sorned": 656},
+							  {"period": "2011 W18", "licensed": 3215, "sorned": 622},
+							  {"period": "2011 W17", "licensed": 3148, "sorned": 632},
+							  {"period": "2011 W16", "licensed": 3155, "sorned": 681},
+							  {"period": "2011 W15", "licensed": 3190, "sorned": 667},
+							  {"period": "2011 W14", "licensed": 3226, "sorned": 620},
+							  {"period": "2011 W13", "licensed": 3245, "sorned": null},
+							  {"period": "2011 W12", "licensed": 3289, "sorned": null},
+							  {"period": "2011 W11", "licensed": 3263, "sorned": null},
+							  {"period": "2011 W10", "licensed": 3189, "sorned": null},
+							  {"period": "2011 W09", "licensed": 3079, "sorned": null},
+							  {"period": "2011 W08", "licensed": 3085, "sorned": null},
+							  {"period": "2011 W07", "licensed": 3055, "sorned": null},
+							  {"period": "2011 W06", "licensed": 3063, "sorned": null},
+							  {"period": "2011 W05", "licensed": 2943, "sorned": null},
+							  {"period": "2011 W04", "licensed": 2806, "sorned": null},
+							  {"period": "2011 W03", "licensed": 2674, "sorned": null},
+							  {"period": "2011 W02", "licensed": 1702, "sorned": null},
+							  {"period": "2011 W01", "licensed": 1732, "sorned": null}
+							];
+							Morris.Line({
+							  element: 'graph10',
+							  data: week_data,
+							  xkey: 'period',
+							  ykeys: ['licensed', 'sorned'],
+							  labels: ['Licensed', 'SORN'],
+							  events: [
+								'2011-04',
+								'2011-08'
+							  ]
+							});
+							</script>
+						</div>
+					</div>
+					<div class="w3l-chart events-chart">
+						<h3>Negative values</h3>
+						<div class="events-chart-info">
+							<div id="graph11"></div>
+							<script>
+							var neg_data = [
+							  {"period": "2011-08-12", "a": 100},
+							  {"period": "2011-03-03", "a": 75},
+							  {"period": "2010-08-08", "a": 50},
+							  {"period": "2010-05-10", "a": 25},
+							  {"period": "2010-03-14", "a": 0},
+							  {"period": "2010-01-10", "a": -25},
+							  {"period": "2009-12-10", "a": -50},
+							  {"period": "2009-10-07", "a": -75},
+							  {"period": "2009-09-25", "a": -100}
+							];
+							Morris.Line({
+							  element: 'graph11',
+							  data: neg_data,
+							  xkey: 'period',
+							  ykeys: ['a'],
+							  labels: ['Series A'],
+							  units: '%'
+							});
+							</script>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 agile-grid-right">
+					<div class="w3l-chart1">
+						<h3>Single Data Set</h3>
+						<div id="graph2"></div>
+					</div>
+					<div class="w3l-chart2">
+						<h3>Without plugin and different options:</h3>
+						<div id="graph3"></div>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+				<div class="go-back">
+				<a href="index.html">Back To Home</a>
+			</div>
+		
+		<div class="footer"><br>
+			<br><p>&copy All Rights Reserved . Designed by Ammara Roohi</p>
+		</div>
+	</section>
+		<script>
+			$(function(){
+				$('#graph').graphify({
+					start: 'combo',
+					obj: {
+						id: 'ggg',
+						width: 620,
+						height: 375,
+						xGrid: false,
+						legend: true,
+						title: 'Linux vs Mac',
+						points: [
+							[7, 26, 33, 74, 12, 49, 33],
+							[32, 46, 75, 38, 62, 20, 52]
+						],
+						pointRadius: 3,
+						colors: ['blue', 'red'],
+						xDist: 70,
+						dataNames: ['Linux', 'Mac'],
+						xName: 'Day',
+						tooltipWidth: 15,
+						animations: true,
+						pointAnimation: true,
+						averagePointRadius: 10,
+						design: {
+							tooltipColor: '#fff',
+							gridColor: 'grey',
+							tooltipBoxColor: 'green',
+							averageLineColor: 'green',
+							pointColor: 'green',
+							lineStrokeColor: 'grey',
+						}
+					}
+				});
+				$('#graph2').graphify({
+					start: 'donut',
+					obj: {
+						id: 'lol',
+						legend: false,
+						showPoints: true,
+						width: 775,
+						legendX: 450,
+						pieSize: 200,
+						shadow: true,
+						height: 400,
+						animations: true,
+						x: [2000, 2001, 2002, 2003, 2004, 2005, 2006],
+						points: [17, 33, 64, 22, 87, 45, 38],
+						xDist: 90,
+						scale: 12,
+						yDist: 35,
+						grid: false,
+						xName: 'Year',
+						dataNames: ['Amount'],
+						design: {
+							lineColor: 'red',
+							tooltipFontSize: '20px',
+							pointColor: 'red',
+							barColor: 'blue',
+							areaColor: 'orange'
+						}
+					}
+				});
+				var bar = new GraphBar({
+					attachTo: '#graph3',
+					special: 'combo',
+					height: 600,
+					width: 620,
+					yDist: 50,
+					xDist: 70,
+					showPoints: false,
+					xGrid: false,
+						legend: true,
+						points: [
+							[17, 21, 51, 74, 12, 49, 33],
+							[32, 15, 75, 20, 45, 90, 52]
+						],
+						colors: ['red', 'orange'],
+						dataNames: ['Hot', 'Warm'],
+						xName: 'Day',
+						tooltipWidth: 15,
+						design: {
+							tooltipColor: '#fff',
+							gridColor: 'black',
+							tooltipBoxColor: 'green',
+							averageLineColor: 'blue',
+						}
+				});
+				bar.init();
+			});
+		</script>
+	<script src="js/bootstrap.js"></script>
+<script src="js/graph.js"></script>
+<script src="js/proton.js"></script>
+</body>
+</html>
